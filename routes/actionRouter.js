@@ -3,7 +3,7 @@ const router = express.Router()
 const actionDB = require('../data/helpers/actionModel')
 
 router.get('/', (req, res) => {
-    db.get()
+    actionDB.get()
       .then(actions => {
         res.status(200).json(actions)
       })
@@ -68,7 +68,7 @@ function verifyAction(req, res, next) {
     if (!req.body.project_id || !req.body.description || !req.body.notes) {
       res.status(404).json({message: 'you are missing one or multiple of: project_id, description, and notes'})
     } else {
-      actionDb.get(req.body.project_id)
+      actionDB.get(req.body.project_id)
       .then(post => {
         if (post) {
           next()
